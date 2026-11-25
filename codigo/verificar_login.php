@@ -1,38 +1,38 @@
 <?php
-   
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+require_once "conexao.php";
 
-   
-    $sql = "select * from usuario WHERE email = '$email' AND senha = '$senha'";
-    
-    require_once "conexao.php";
-    $resultado = mysqli_query($conexao, $sql);
+$email = $_POST['email'];
+$senha = $_POST['senha'];
 
-   
-    $quantidade = mysqli_num_rows($resultado);
-    
+$sql = "select * from usuario WHERE email = ?";
+$comando = mysqli_prepare($conexao, $sql);
 
-  
-    if ($quantidade == 1) {
+mysqli_stmt_bind_param($comando, "s", $email);
+mysqli_stmt_execute($comando);
 
-        $linha = mysqli_fetch_array($resultado);
+$resultado = mysqli_stmt_get_result($comando);
+$quantidade = mysqli_num_rows($resultado);
 
+if ($quantidade == 1) {
+    $linha = mysqli_fetch_array($resultado);
+    $senha_banco = $linha['senha'];
+
+    if (password_verify($senha, $senha_banco)) {
         $nome = $linha['nome'];
         $email = $linha['email'];
-        $foto = $linha['foto'];
-        $idusuario = $linha['idusuario']
+        $idusuario = $linha['idusuario'];
+        // $foto = $linha['foto'];
 
-
-        
         session_start();
-        $_SESSION['logado'] = 1;
         $_SESSION['email'] = $email;
         $_SESSION['nome'] = $nome;
-        
+        $_SESSION['idusuario'] = $idusuario;
+
         header("Location: principal.php");
-    }
-    else {
+    } else {
         header("Location: index.php?erro=login&email=$email");
     }
+} else {
+    header("Location: index.php?erro=login&email=$email");
+}
 ?>
