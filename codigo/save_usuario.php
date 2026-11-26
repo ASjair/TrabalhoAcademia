@@ -6,7 +6,6 @@ $nome = $_POST['nome'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 $telefone = $_POST['telefone'];
-$foto = $_POST['foto'];
 
 $nova_senha = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -22,7 +21,10 @@ $caminho_destino = "fotos_user/" . $novo_nome;
 move_uploaded_file($caminho_temporario, $caminho_destino);
 
 $sql = "INSERT INTO usuario (idplano, nome, email, senha, telefone, foto) VALUES (?, ?, ?, ?, ?, ?)";
-mysqli_stmt_bind_param($comando, "isssss", $idplano, $nome, $email, $telefone ,$nova_senha, $novo_nome);
+
+$comando = mysqli_prepare($conexao, $sql);
+mysqli_stmt_bind_param($comando, "isssss", $idplano, $nome, $email, $nova_senha ,$telefone, $novo_nome);
+
 mysqli_stmt_execute($comando);
 
 $resultado = mysqli_stmt_get_result($comando);
