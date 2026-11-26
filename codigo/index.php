@@ -8,6 +8,7 @@
 <body>
     
 <a href="form_usuario.php"> Fazer Cadastro</a><br><br>
+<a href="listar_usuario.php"> Olha a lista aí</a><br><br>
 
 </body>
 </html>
