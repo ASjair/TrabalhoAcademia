@@ -28,7 +28,7 @@ if ($quantidade == 1) {
         $_SESSION['nome'] = $nome;
         $_SESSION['idusuario'] = $idusuario;
 
-        header("Location: principal.php");
+        header("Location: index.php");
     } else {
         header("Location: index.php?erro=login&email=$email");
     }
