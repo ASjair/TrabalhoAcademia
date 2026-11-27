@@ -62,7 +62,9 @@ CREATE TABLE IF NOT EXISTS `banco_academia`.`instrutor` (
   `nome` VARCHAR(100) NOT NULL,
   `especialidade` VARCHAR(100) NOT NULL,
   `telefone` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`idinstrutor`))
+  `senha` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`idinstrutor`)
+)
 ENGINE = InnoDB;
 
 

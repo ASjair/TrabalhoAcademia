@@ -7,8 +7,9 @@
 </head>
 <body>
     
-<a href="form_usuario.php"> Fazer Cadastro</a><br><br>
-<a href="listar_usuario.php"> Olha a lista aí</a><br><br>
-
+<a href="form_usuario.php"> Fazer Cadastro</a><br>
+<a href="listar_usuario.php">lista de usuarios</a><br>
+<a href="form_esporte.php">cadastrar esporte</a><br>
+<a href="form_instrutor.php">cadastrar instrutor</a><br>
 </body>
 </html>

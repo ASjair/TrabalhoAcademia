@@ -37,7 +37,7 @@
             echo "<td>$nome</td>";
             echo "<td>$email</td>";
             echo "<td>$telefone</td>";
-            echo "<td>$foto</td>";
+            echo '<img src="fotos_user/$foto" width="50">';
             echo "<td>$idplano</td>";
             echo "</tr>";
         }
