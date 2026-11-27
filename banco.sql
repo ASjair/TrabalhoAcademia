@@ -37,7 +37,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `banco_academia`.`usuario` (
   `idusuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
-  `email` VARCHAR(200) NOT NULL,
+  `email` VARCHAR(200) NOT NULL UNIQUE,
   `senha` VARCHAR(255) NOT NULL,
   `foto` VARCHAR(255) NOT NULL,
   `telefone` VARCHAR(20) NOT NULL,

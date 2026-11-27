@@ -20,7 +20,10 @@
         <?php
         require_once "conexao.php";
 
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT usuario.*, plano.nome AS nomeplano
+        FROM usuario
+        INNER JOIN plano
+        ON usuario.idplano = plano.idplano";
 
         $resultados = mysqli_query($conexao, $sql);
 
@@ -30,15 +33,15 @@
             $email = $linha['email'];
             $telefone = $linha['telefone'];
             $foto = $linha['foto'];
-            $idplano = $linha['idplano'];
+            $nomeplano = $linha['nomeplano'];
 
             echo "<tr>";
             echo "<td>$idusuario</td>";
             echo "<td>$nome</td>";
             echo "<td>$email</td>";
             echo "<td>$telefone</td>";
-            echo '<img src="fotos_user/$foto" width="50">';
-            echo "<td>$idplano</td>";
+            echo "<td><img src='fotos_user/$foto' width='50'></td>";
+            echo "<td>$nomeplano</td>";
             echo "</tr>";
         }
 
