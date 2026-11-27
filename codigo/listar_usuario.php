@@ -16,7 +16,7 @@
         </tr>
 
         <?php
-        require_once "./conexao.php";
+        require_once "conexao.php";
 
         $sql = "SELECT * FROM usuario";
 
@@ -28,8 +28,7 @@
             $email = $linha['email'];
             $telefone = $linha['telefone'];
             $foto = $linha['foto'];
-       //     $nomeplano = $linha['nome']
-       //    $idplano = $linha['idplano']
+            $idplano = $linha['idplano'];
 
             echo "<tr>";
             echo "<td>$idusuario</td>";
@@ -37,7 +36,7 @@
             echo "<td>$email</td>";
             echo "<td>$telefone</td>";
             echo "<td>$foto</td>";
-            echo "<td>$foto</td>";
+            echo "<td>$idplano</td>";
             echo "</tr>";
         }
 
